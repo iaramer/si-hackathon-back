@@ -23,7 +23,7 @@ public class Topic {
 
   private LanguageType language;
 
-  private Exam exam;
+  private ExamType exam;
 
   private List<Long> materialId;
 

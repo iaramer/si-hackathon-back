@@ -16,12 +16,12 @@ public class MaterialService {
 
   private MaterialRepository materialRepository;
 
-  public Material getMaterial(Exam exam, Long topicId) {
+  public Material getMaterial(Exam examId, Long topicId, Long langId) {
     List<Material> materials = materialRepository.findAll();
 
     return materials.stream()
         .filter(material -> material.getTopics().stream()
-            .filter(topic -> topic.getExam().equals(exam))
+            .filter(topic -> topic.getExam().equals(examId))
             .anyMatch(topic -> topic.getId().equals(topicId)))
         .findFirst().orElseThrow(NoSuchElementException::new);
   }

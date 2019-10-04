@@ -1,6 +1,6 @@
 package com.epam.examreviewer.service;
 
-import com.epam.examreviewer.model.Exam;
+import com.epam.examreviewer.model.ExamType;
 import com.epam.examreviewer.model.Question;
 import com.epam.examreviewer.repository.QuestionRepository;
 import java.util.List;
@@ -16,7 +16,7 @@ public class QuestionService {
 
   private QuestionRepository questionRepository;
 
-  public Question getRandomQuestion(Exam exam, Long topicId) {
+  public Question getRandomQuestion(ExamType exam, Long topicId) {
     List<Question> questions = questionRepository.findAll();
 
     return questions.stream()

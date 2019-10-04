@@ -18,7 +18,7 @@ public class MaterialController {
 
   @GetMapping("/material")
   @ResponseStatus(HttpStatus.OK)
-  public Material getMaterial(@RequestParam Exam examId, @RequestParam Long topicId) {
-    return materialService.getMaterial(examId, topicId);
+  public Material getMaterial(@RequestParam Exam examId, @RequestParam Long topicId, @RequestParam Long langId) {
+    return materialService.getMaterial(examId, topicId, langId);
   }
 }
