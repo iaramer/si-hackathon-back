@@ -1,6 +1,6 @@
 package com.epam.examreviewer.controller;
 
-import com.epam.examreviewer.model.Exam;
+import com.epam.examreviewer.model.ExamType;
 import com.epam.examreviewer.model.Question;
 import com.epam.examreviewer.service.QuestionService;
 import java.util.List;
@@ -26,7 +26,7 @@ public class QuestionController {
 
   @GetMapping("/question")
   @ResponseStatus(HttpStatus.OK)
-  public Question getQuestion(@RequestParam Exam examId, @RequestParam Long topicId) {
+  public Question getQuestion(@RequestParam ExamType examId, @RequestParam Long topicId) {
     return questionService.getRandomQuestion(examId, topicId);
   }
 
