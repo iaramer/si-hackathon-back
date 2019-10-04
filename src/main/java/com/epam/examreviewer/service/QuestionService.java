@@ -25,4 +25,12 @@ public class QuestionService {
             .anyMatch(topic -> topic.getId().equals(topicId)))
         .findFirst().orElseThrow(NoSuchElementException::new);
   }
+
+  public Question saveQuestion(Question question) {
+    return questionRepository.save(question);
+  }
+
+  public List<Question> getAllQuestions() {
+    return questionRepository.findAll();
+  }
 }
