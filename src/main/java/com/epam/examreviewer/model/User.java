@@ -1,12 +1,10 @@
 package com.epam.examreviewer.model;
 
-import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-
 
 @Data
 @NoArgsConstructor
@@ -17,6 +15,6 @@ public class User {
   @Id
   private Long id;
 
-  @Field(value = "Full_name")
-  private String fullName;
+  private String name;
+
 }

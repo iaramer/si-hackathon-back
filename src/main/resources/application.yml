@@ -1,0 +1,9 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: hacker
+      password: hello
+      database: si-hackathon
+      port: 27017
+      host: 10.66.169.253 #localhost
