@@ -13,9 +13,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Answer {
 
   @Id
-  private Long id;
+  private long id;
 
   private String studentName;
 
   private long mark;
+
+  private String answerText;
 }

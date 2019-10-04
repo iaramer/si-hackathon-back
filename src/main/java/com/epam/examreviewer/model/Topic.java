@@ -1,7 +1,6 @@
 package com.epam.examreviewer.model;
 
 import java.util.List;
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,13 +15,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Topic {
 
   @Id
-  private long id;
+  private Long id;
 
   private String name;
 
   private String description;
 
-  private Language lang;
+  private Language language;
 
   private Exam exam;
 
