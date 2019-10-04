@@ -18,13 +18,13 @@ public class LanguagesController {
 
   private final LanguageService languageService;
 
-  @GetMapping(value = "/languages")
+  @GetMapping("/languages")
   @ResponseStatus(HttpStatus.OK)
   public List<Language> getAllLanguages(@RequestParam Exam examId) {
     return languageService.getAllLanguages(examId);
   }
 
-  @GetMapping(value = "/topics")
+  @GetMapping("/topics")
   @ResponseStatus(HttpStatus.OK)
   public List<Topic> getAllTopics(@RequestParam Exam examId, @RequestParam Language langId) {
     return languageService.getAllTopics(examId, langId);
