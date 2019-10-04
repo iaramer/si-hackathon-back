@@ -1,8 +1,6 @@
 package com.epam.examreviewer.model;
 
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
