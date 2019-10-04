@@ -16,7 +16,7 @@ public class Material {
 
   private String description;
 
-  private List<String> materials;
+  private List<String> materialLinks;
 
-  private List<String> topics;
+  private List<Topic> topics;
 }

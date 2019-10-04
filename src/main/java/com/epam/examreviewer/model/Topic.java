@@ -15,13 +15,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Topic {
 
   @Id
-  private long id;
+  private Long id;
 
   private String name;
 
   private String description;
 
-  private Language lang;
+  private Language language;
 
   private Exam exam;
 
