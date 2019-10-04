@@ -18,5 +18,5 @@ public class Exam {
 
   private String description;
 
-  private List<Long> listOfLanguagesId;
+  private List<String> listOfLanguagesName;
 }

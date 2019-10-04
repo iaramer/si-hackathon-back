@@ -1,6 +1,7 @@
 package com.epam.examreviewer.service;
 
 import com.epam.examreviewer.model.Exam;
+import com.epam.examreviewer.model.ExamType;
 import com.epam.examreviewer.model.Language;
 import com.epam.examreviewer.repository.ExamRepository;
 import com.epam.examreviewer.repository.LanguageRepository;
@@ -14,12 +15,15 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class LanguageService {
 
-  private final LanguageRepository languageRepository;
   private final ExamRepository examRepository;
+  private final LanguageRepository languageRepository;
 
-  public List<Language> getAllLanguages(Exam examId) {
+  public List<Language> getAllLanguages(ExamType examType) {
 
-    return languageRepository.findAll();
+    return examRepository.findByExamType(examType)
+        .map(Exam::getListOfLanguagesName)
+        .map(languageRepository::findByNameIn)
+        .orElse(List.of());
   }
 
 }
