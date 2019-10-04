@@ -2,6 +2,7 @@ package com.epam.examreviewer.controller;
 
 import com.epam.examreviewer.model.Exam;
 import com.epam.examreviewer.model.Language;
+import com.epam.examreviewer.model.LanguageType;
 import com.epam.examreviewer.model.Topic;
 import com.epam.examreviewer.service.LanguageService;
 import java.util.List;
@@ -26,7 +27,7 @@ public class LanguagesController {
 
   @GetMapping("/topics")
   @ResponseStatus(HttpStatus.OK)
-  public List<Topic> getAllTopics(@RequestParam Exam examId, @RequestParam Language langId) {
+  public List<Topic> getAllTopics(@RequestParam Exam examId, @RequestParam LanguageType langId) {
     return languageService.getAllTopics(examId, langId);
   }
 }

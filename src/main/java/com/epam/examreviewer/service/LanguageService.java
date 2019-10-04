@@ -2,7 +2,9 @@ package com.epam.examreviewer.service;
 
 import com.epam.examreviewer.model.Exam;
 import com.epam.examreviewer.model.Language;
+import com.epam.examreviewer.model.LanguageType;
 import com.epam.examreviewer.model.Topic;
+import com.epam.examreviewer.repository.LanguageRepository;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +16,13 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class LanguageService {
 
-  public List<Language> getAllLanguages(Exam examId){
+  private final LanguageRepository languageRepository;
 
-    return new ArrayList<>();
+  public List<Language> getAllLanguages(Exam examId){
+    return languageRepository.findAll();
   }
 
-  public List<Topic> getAllTopics(Exam examId, Language langId){
+  public List<Topic> getAllTopics(Exam examId, LanguageType langId){
     return new ArrayList<>();
   }
 

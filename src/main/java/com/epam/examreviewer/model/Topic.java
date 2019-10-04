@@ -21,7 +21,7 @@ public class Topic {
 
   private String description;
 
-  private Language language;
+  private LanguageType language;
 
   private Exam exam;
 
