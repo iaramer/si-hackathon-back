@@ -15,4 +15,7 @@ public class Material {
   private long id;
 
   private List<String> materials;
+
+  private List<String> topics;
+
 }
