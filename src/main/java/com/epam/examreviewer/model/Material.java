@@ -14,5 +14,7 @@ public class Material {
   @Id
   private long id;
 
+  private String description;
+
   private List<String> materials;
 }

@@ -6,15 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "user")
-public class User {
+@Document(collection = "question")
+public class Question {
 
   @Id
-  private Long id;
+  private long id;
 
-  private String name;
+  private String question;
 }
