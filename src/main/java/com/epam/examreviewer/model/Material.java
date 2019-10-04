@@ -16,5 +16,5 @@ public class Material {
 
   private String description;
 
-  private List<String> materials;
+  private String materials;
 }
