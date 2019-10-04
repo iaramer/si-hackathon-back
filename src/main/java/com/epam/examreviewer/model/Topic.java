@@ -6,13 +6,16 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Document(collection = "topic")
 public class Topic {
 
+  @Id
   private long id;
 
   private String name;
@@ -23,7 +26,7 @@ public class Topic {
 
   private Exam exam;
 
-  private Material material;
+  private List<Long> materialId;
 
-  private List<String> questions;
+  private List<Long> questionId;
 }
