@@ -10,4 +10,6 @@ public class AnswerEvaluationDto {
   private String questionId;
 
   private Long mark;
+
+  private String markText;
 }

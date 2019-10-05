@@ -2,7 +2,6 @@ package com.epam.examreviewer.service;
 
 import com.epam.examreviewer.converter.MaterialConverter;
 import com.epam.examreviewer.dto.MaterialDto;
-import com.epam.examreviewer.dto.TopicDto;
 import com.epam.examreviewer.model.Topic;
 import com.epam.examreviewer.repository.MaterialRepository;
 import com.epam.examreviewer.repository.TopicRepository;

@@ -27,12 +27,12 @@ public class TopicController {
 
   @GetMapping("/allTopics")
   @ResponseStatus(HttpStatus.OK)
-  public List<TopicDto> getAllTopics(){
+  public List<TopicDto> getAllTopics() {
     return topicService.getAllTopics();
   }
 
   @PostMapping("/topic")
-  public Topic createTopic(@RequestBody Topic topic){
+  public Topic createTopic(@RequestBody Topic topic) {
     return topicService.createTopic(topic);
   }
 }
