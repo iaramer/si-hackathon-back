@@ -18,5 +18,5 @@ public class Material {
 
   private List<String> materialLinks;
 
-  private List<Topic> topics;
+  private List<String> topicIds;
 }

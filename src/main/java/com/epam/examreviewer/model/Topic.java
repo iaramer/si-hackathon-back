@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,11 +20,11 @@ public class Topic {
 
   private String description;
 
-  private LanguageType language;
+  private String languageId;
 
-  private ExamType exam;
+  private String examId;
 
-  private List<Long> materialId;
+  private List<String> materialIds;
 
-  private List<Long> questionId;
+  private List<String> questionIds;
 }

@@ -20,11 +20,9 @@ public class MaterialService {
   private MaterialRepository materialRepository;
   private final TopicRepository topicRepository;
 
-  public List<MaterialDto> getMaterials(TopicDto topicDto) {
-    return topicRepository
-        .findByNameAndExamNameAndLanguageName(topicDto.getTopicName(), topicDto.getExamName(),
-            topicDto.getLanguageName())
-        .map(Topic::getMaterialId)
+  public List<MaterialDto> getMaterials(Long topicId) {
+    return topicRepository.findById(String.valueOf(topicId))
+        .map(Topic::getMaterialIds)
         .map(materialRepository::findByIdIn)
         .map(MaterialConverter::toDto)
         .orElseThrow(NoSuchElementException::new);

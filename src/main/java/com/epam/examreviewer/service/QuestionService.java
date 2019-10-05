@@ -19,11 +19,12 @@ public class QuestionService {
   public Question getRandomQuestion(ExamType exam, Long topicId) {
     List<Question> questions = questionRepository.findAll();
 
-    return questions.stream()
-        .filter(question -> question.getTopics().stream()
-            .filter(topic -> topic.getExam().equals(exam))
-            .anyMatch(topic -> topic.getId().equals(topicId)))
-        .findFirst().orElseThrow(NoSuchElementException::new);
+    return null;
+//    return questions.stream()
+//        .filter(question -> question.getTopics().stream()
+//            .filter(topic -> topic.getExam().equals(exam))
+//            .anyMatch(topic -> topic.getId().equals(topicId)))
+//        .findFirst().orElseThrow(NoSuchElementException::new);
   }
 
   public Question saveQuestion(Question question) {

@@ -1,13 +1,15 @@
 package com.epam.examreviewer.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class TopicDto {
 
   private String topicName;
 
-  private String languageName;
+  private String languageId;
 
-  private String examName;
+  private String examId;
 }
