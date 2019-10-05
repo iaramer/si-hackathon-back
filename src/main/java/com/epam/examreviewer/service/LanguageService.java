@@ -1,8 +1,8 @@
 package com.epam.examreviewer.service;
 
+import com.epam.examreviewer.converter.LanguageConverter;
+import com.epam.examreviewer.dto.LanguageDto;
 import com.epam.examreviewer.model.Exam;
-import com.epam.examreviewer.model.ExamType;
-import com.epam.examreviewer.model.Language;
 import com.epam.examreviewer.repository.ExamRepository;
 import com.epam.examreviewer.repository.LanguageRepository;
 import java.util.List;
@@ -18,11 +18,11 @@ public class LanguageService {
   private final ExamRepository examRepository;
   private final LanguageRepository languageRepository;
 
-  public List<Language> getAllLanguages(ExamType examType) {
-
-    return examRepository.findByExamType(examType)
+  public List<LanguageDto> getAllLanguages(String examName) {
+    return examRepository.findByName(examName)
         .map(Exam::getListOfLanguagesName)
         .map(languageRepository::findByNameIn)
+        .map(LanguageConverter::toDto)
         .orElse(List.of());
   }
 

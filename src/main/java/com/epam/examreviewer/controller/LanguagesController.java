@@ -1,7 +1,6 @@
 package com.epam.examreviewer.controller;
 
-import com.epam.examreviewer.model.ExamType;
-import com.epam.examreviewer.model.Language;
+import com.epam.examreviewer.dto.LanguageDto;
 import com.epam.examreviewer.service.LanguageService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +18,8 @@ public class LanguagesController {
 
   @GetMapping("/languages")
   @ResponseStatus(HttpStatus.OK)
-  public List<Language> getAllLanguages(@RequestParam ExamType examId) {
-    return languageService.getAllLanguages(examId);
+  public List<LanguageDto> getAllLanguages(@RequestParam String examName) {
+    return languageService.getAllLanguages(examName);
   }
 
 }

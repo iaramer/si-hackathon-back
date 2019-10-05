@@ -1,8 +1,11 @@
 package com.epam.examreviewer.service;
 
-import com.epam.examreviewer.model.Exam;
-import com.epam.examreviewer.model.Material;
+import com.epam.examreviewer.converter.MaterialConverter;
+import com.epam.examreviewer.dto.MaterialDto;
+import com.epam.examreviewer.dto.TopicDto;
+import com.epam.examreviewer.model.Topic;
 import com.epam.examreviewer.repository.MaterialRepository;
+import com.epam.examreviewer.repository.TopicRepository;
 import java.util.List;
 import java.util.NoSuchElementException;
 import lombok.AllArgsConstructor;
@@ -15,15 +18,16 @@ import org.springframework.stereotype.Service;
 public class MaterialService {
 
   private MaterialRepository materialRepository;
+  private final TopicRepository topicRepository;
 
-  public Material getMaterial(Exam examId, Long topicId, Long langId) {
-    List<Material> materials = materialRepository.findAll();
-
-    return materials.stream()
-        .filter(material -> material.getTopics().stream()
-            .filter(topic -> topic.getExam().equals(examId))
-            .anyMatch(topic -> topic.getId().equals(topicId)))
-        .findFirst().orElseThrow(NoSuchElementException::new);
+  public List<MaterialDto> getMaterials(TopicDto topicDto) {
+    return topicRepository
+        .findByNameAndExamNameAndLanguageName(topicDto.getTopicName(), topicDto.getExamName(),
+            topicDto.getLanguageName())
+        .map(Topic::getMaterialId)
+        .map(materialRepository::findByIdIn)
+        .map(MaterialConverter::toDto)
+        .orElseThrow(NoSuchElementException::new);
   }
 
 }

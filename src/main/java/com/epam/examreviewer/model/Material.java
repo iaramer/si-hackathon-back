@@ -12,7 +12,7 @@ import org.springframework.data.annotation.Id;
 public class Material {
 
   @Id
-  private long id;
+  private Long id;
 
   private String description;
 

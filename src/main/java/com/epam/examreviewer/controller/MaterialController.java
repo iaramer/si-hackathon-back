@@ -1,8 +1,9 @@
 package com.epam.examreviewer.controller;
 
-import com.epam.examreviewer.model.Exam;
-import com.epam.examreviewer.model.Material;
+import com.epam.examreviewer.dto.MaterialDto;
+import com.epam.examreviewer.dto.TopicDto;
 import com.epam.examreviewer.service.MaterialService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +17,9 @@ public class MaterialController {
 
   private final MaterialService materialService;
 
-  @GetMapping("/material")
+  @GetMapping("/materials")
   @ResponseStatus(HttpStatus.OK)
-  public Material getMaterial(@RequestParam Exam examId, @RequestParam Long topicId, @RequestParam Long langId) {
-    return materialService.getMaterial(examId, topicId, langId);
+  public List<MaterialDto> getMaterials(@RequestParam TopicDto topicDto) { //@RequestParam Exam examId, @RequestParam Long topicId, @RequestParam Long langId
+    return materialService.getMaterials(topicDto);
   }
 }
