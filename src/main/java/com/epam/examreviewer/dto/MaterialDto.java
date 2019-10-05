@@ -1,5 +1,6 @@
 package com.epam.examreviewer.dto;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,4 +13,6 @@ public class MaterialDto {
   private Long id;
 
   private String description;
+
+  private List<String> materialLinks;
 }
