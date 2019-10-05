@@ -14,6 +14,6 @@ public class AnswerService {
   private final AnswerRepository answerRepository;
 
   public Answer getAnswer(Long id){
-    return answerRepository.findById(id).get();
+    return answerRepository.findById(String.valueOf(id)).get();
   }
 }

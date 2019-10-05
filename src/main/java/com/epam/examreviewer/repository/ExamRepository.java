@@ -4,7 +4,6 @@ import com.epam.examreviewer.model.Exam;
 import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ExamRepository extends MongoRepository<Exam, Long> {
+public interface ExamRepository extends MongoRepository<Exam, String> {
 
-  Optional<Exam> findByName(String examName);
 }

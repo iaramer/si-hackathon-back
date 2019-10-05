@@ -18,8 +18,8 @@ public class LanguageService {
   private final ExamRepository examRepository;
   private final LanguageRepository languageRepository;
 
-  public List<LanguageDto> getAllLanguages(String examName) {
-    return examRepository.findByName(examName)
+  public List<LanguageDto> getAllLanguages(Long examId) {
+    return examRepository.findById(String.valueOf(examId))
         .map(Exam::getListOfLanguagesName)
         .map(languageRepository::findByNameIn)
         .map(LanguageConverter::toDto)

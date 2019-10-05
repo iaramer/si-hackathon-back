@@ -18,8 +18,8 @@ public class LanguagesController {
 
   @GetMapping("/languages")
   @ResponseStatus(HttpStatus.OK)
-  public List<LanguageDto> getAllLanguages(@RequestParam String examName) {
-    return languageService.getAllLanguages(examName);
+  public List<LanguageDto> getAllLanguages(@RequestParam Long examId) {
+    return languageService.getAllLanguages(examId);
   }
 
 }

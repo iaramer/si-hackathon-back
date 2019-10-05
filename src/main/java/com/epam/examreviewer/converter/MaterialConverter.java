@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class MaterialConverter {
 
   private static MaterialDto toDto(Material material) {
-    return new MaterialDto(material.getId(), material.getDescription());
+    return new MaterialDto(Long.valueOf(material.getId()), material.getDescription());
   }
 
   public static List<MaterialDto> toDto(List<Material> materials) {

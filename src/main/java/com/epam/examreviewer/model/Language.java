@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Language {
 
   @Id
-  private Long id;
+  private String id;
 
   private LanguageType languageType;
 

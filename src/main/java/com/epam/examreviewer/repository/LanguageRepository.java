@@ -4,7 +4,7 @@ import com.epam.examreviewer.model.Language;
 import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface LanguageRepository extends MongoRepository<Language, Long> {
+public interface LanguageRepository extends MongoRepository<Language, String> {
 
   List<Language> findByNameIn(List<String> languageNames);
 }

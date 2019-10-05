@@ -12,7 +12,7 @@ import org.springframework.data.annotation.Id;
 public class Question {
 
   @Id
-  private long id;
+  private String id;
 
   private String questionText;
 
