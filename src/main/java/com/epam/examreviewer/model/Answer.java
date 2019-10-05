@@ -20,4 +20,6 @@ public class Answer {
   private long mark;
 
   private String answerText;
+
+  private String questionId;
 }
