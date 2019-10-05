@@ -4,25 +4,28 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 @Component
+@Slf4j
 public class NLPMock {
 
-  private static final double DISPERTION_COEFFICIENT = 1.2;
+  private static final double DISPERSION_COEFFICIENT = 1.2;
+  private Map<String, Double> keywords;
 
-  public double evaluateAnswerText(String answerText, String referenceText,
-      Map<String, Double> keywords) {
+  public NLPMock(CSVKeywordsParser csvKeywordsParser) {
+    keywords = csvKeywordsParser.getKeywordsMap();
+  }
 
-    int keywordsTotalAmount = keywords.size();
-    double keywordsTotalWeight = keywords.values().stream().reduce(0.0, Double::sum);
+  public double evaluateAnswerText(String answerText, String referenceText) {
 
     Set<String> answerWordSet = new HashSet<>(
         Arrays.asList(answerText.trim().toLowerCase().split(" ")));
     Set<String> referenceWordSet = new HashSet<>(
         Arrays.asList(referenceText.trim().toLowerCase().split(" ")));
     double answerTotalWeight =
-        DISPERTION_COEFFICIENT * evaluateWeightOfText(answerWordSet, keywords);
+        DISPERSION_COEFFICIENT * evaluateWeightOfText(answerWordSet, keywords);
     double referenceTotalWeight = evaluateWeightOfText(referenceWordSet, keywords);
     double mark = answerTotalWeight / referenceTotalWeight;
 
