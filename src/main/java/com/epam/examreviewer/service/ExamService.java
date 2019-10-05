@@ -12,7 +12,7 @@ public class ExamService {
 
   private final ExamRepository examRepository;
 
-  public List<Exam> getAll(){
+  public List<Exam> getAll() {
     return examRepository.findAll();
   }
 }

@@ -17,10 +17,9 @@ public class AnswerController {
 
   private final AnswerService answerService;
 
-  @PostMapping("/answer")
+  @PostMapping("/evaluatedAnswers")
   @ResponseStatus(HttpStatus.OK)
-  public List<AnswerEvaluationDto> getAnswerResponse(@RequestParam AnswerDto answerDto){
-//    return answerService.getAnswer(answerDto);
-    return List.of();
+  public List<AnswerEvaluationDto> getAnswerResponse(@RequestParam AnswerDto answerDto) {
+    return answerService.getEvaluatedAnswer(answerDto);
   }
 }

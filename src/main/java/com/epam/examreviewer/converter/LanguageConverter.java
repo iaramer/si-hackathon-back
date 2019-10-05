@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 public class LanguageConverter {
 
   private static LanguageDto toDto(Language language) {
-    return new LanguageDto(Long.valueOf(language.getId()), language.getName(), language.getDescription());
+    return new LanguageDto(Long.valueOf(language.getId()), language.getName(),
+        language.getDescription());
   }
 
   public static List<LanguageDto> toDto(List<Language> languages) {

@@ -14,4 +14,6 @@ public class Question {
   private String id;
 
   private String questionText;
+
+  private String materialId;
 }
