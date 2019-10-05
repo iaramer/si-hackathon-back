@@ -15,12 +15,6 @@ public class TopicService {
 
   private final TopicRepository topicRepository;
 
-  public List<TopicDto> getAllTopics() {
-    return topicRepository.findAll().stream()
-        .map(TopicConverter::toDto)
-        .collect(Collectors.toList());
-  }
-
   public List<TopicDto> getTopics(Long examId, Long languageId) {
     return topicRepository
         .findByExamIdAndLanguageId(String.valueOf(examId), String.valueOf(languageId)).stream()

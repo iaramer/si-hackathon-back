@@ -25,12 +25,6 @@ public class TopicController {
     return topicService.getTopics(examId, languageId);
   }
 
-  @GetMapping("/allTopics")
-  @ResponseStatus(HttpStatus.OK)
-  public List<TopicDto> getAllTopics() {
-    return topicService.getAllTopics();
-  }
-
   @PostMapping("/topic")
   public Topic createTopic(@RequestBody Topic topic) {
     return topicService.createTopic(topic);
