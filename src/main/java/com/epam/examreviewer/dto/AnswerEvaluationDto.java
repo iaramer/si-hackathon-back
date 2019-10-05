@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class AnswerEvaluationDto {
 
-  private Long answerId;
+  private String questionId;
 
   private Long mark;
 }

@@ -1,11 +1,13 @@
 package com.epam.examreviewer.controller;
 
-import com.epam.examreviewer.model.Answer;
+import com.epam.examreviewer.dto.AnswerDto;
+import com.epam.examreviewer.dto.AnswerEvaluationDto;
 import com.epam.examreviewer.service.AnswerService;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +19,8 @@ public class AnswerController {
 
   @PostMapping("/answer")
   @ResponseStatus(HttpStatus.OK)
-  public Answer getAnswer(@RequestHeader("id") Long question_id){
-    return answerService.getAnswer(question_id);
+  public List<AnswerEvaluationDto> getAnswerResponse(@RequestParam AnswerDto answerDto){
+//    return answerService.getAnswer(answerDto);
+    return List.of();
   }
 }

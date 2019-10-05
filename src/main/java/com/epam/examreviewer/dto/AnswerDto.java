@@ -1,5 +1,6 @@
 package com.epam.examreviewer.dto;
 
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -7,9 +8,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class AnswerDto {
 
-  private Long answerId;
-
   private String studentName;
 
-  private String answerText;
+  private List<AnswerItem> answers;
 }
