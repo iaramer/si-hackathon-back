@@ -16,8 +16,8 @@ public class AnswerService {
   private final AnswerRepository answerRepository;
 
   public Answer getAnswer(Long questionId) {
-    String answerId = String
-        .valueOf(questionRepository.findById(String.valueOf(questionId)).get().getAnswerId());
+    String answerId = "";//String
+//        .valueOf(questionRepository.findById(String.valueOf(questionId)).get().getAnswerId());
 
     return answerRepository.findById(answerId).get();
   }
