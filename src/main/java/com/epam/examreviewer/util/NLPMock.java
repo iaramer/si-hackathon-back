@@ -1,26 +1,39 @@
 package com.epam.examreviewer.util;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
+import java.util.Set;
+import org.springframework.stereotype.Component;
 
+@Component
 public class NLPMock {
 
-  private static final double GRADE_COEFFICIENT = 1.2;
+  private static final double DISPERTION_COEFFICIENT = 1.2;
 
-  public double evaluateAnswerText(String answerText, Map<String, Double> keywords) {
+  public double evaluateAnswerText(String answerText, String referenceText,
+      Map<String, Double> keywords) {
 
     int keywordsTotalAmount = keywords.size();
     double keywordsTotalWeight = keywords.values().stream().reduce(0.0, Double::sum);
-    double answerTotalWeight = parseTextForKeywords() * GRADE_COEFFICIENT;
 
+    Set<String> answerWordSet = new HashSet<>(
+        Arrays.asList(answerText.trim().toLowerCase().split(" ")));
+    Set<String> referenceWordSet = new HashSet<>(
+        Arrays.asList(referenceText.trim().toLowerCase().split(" ")));
+    double answerTotalWeight =
+        DISPERTION_COEFFICIENT * evaluateWeightOfText(answerWordSet, keywords);
+    double referenceTotalWeight = evaluateWeightOfText(referenceWordSet, keywords);
+    double mark = answerTotalWeight / referenceTotalWeight;
 
-    return answerTotalWeight < 1 ? answerTotalWeight : 1.0;
+    return mark < 1 ? mark : 1.0;
   }
 
-  // TODO: parse text in stream by splitting it to separate words and then sum all weights
-  private double parseTextForKeywords() { // sum weights of keywords if they appear in answerText
-    Random r = new Random();
-    return r.nextDouble();
+  private double evaluateWeightOfText(Set<String> wordSet, Map<String, Double> keywords) {
+    return wordSet.stream()
+        .filter(keywords::containsKey)
+        .map(keywords::get)
+        .reduce(0.0, Double::sum);
   }
 
 }
