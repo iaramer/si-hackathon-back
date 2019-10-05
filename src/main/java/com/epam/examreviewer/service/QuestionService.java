@@ -8,16 +8,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Slf4j
 public class QuestionService {
 
-  private QuestionRepository questionRepository;
-  private TopicRepository topicRepository;
+  private final QuestionRepository questionRepository;
+  private final TopicRepository topicRepository;
 
   public Question saveQuestion(Question question) {
     return questionRepository.save(question);
