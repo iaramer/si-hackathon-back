@@ -2,6 +2,7 @@ package com.epam.examreviewer.service;
 
 import com.epam.examreviewer.converter.TopicConverter;
 import com.epam.examreviewer.dto.TopicDto;
+import com.epam.examreviewer.model.Topic;
 import com.epam.examreviewer.repository.TopicRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -14,10 +15,20 @@ public class TopicService {
 
   private final TopicRepository topicRepository;
 
+  public List<TopicDto> getAllTopics() {
+    return topicRepository.findAll().stream()
+        .map(TopicConverter::toDto)
+        .collect(Collectors.toList());
+  }
+
   public List<TopicDto> getTopics(Long examId, Long languageId) {
     return topicRepository
         .findByExamIdAndLanguageId(String.valueOf(examId), String.valueOf(languageId)).stream()
         .map(TopicConverter::toDto)
         .collect(Collectors.toList());
+  }
+
+  public Topic createTopic(Topic topic) {
+    return topicRepository.save(topic);
   }
 }
