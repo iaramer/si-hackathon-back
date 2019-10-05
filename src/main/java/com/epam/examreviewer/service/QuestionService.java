@@ -1,10 +1,12 @@
 package com.epam.examreviewer.service;
 
-import com.epam.examreviewer.model.ExamType;
 import com.epam.examreviewer.model.Question;
+import com.epam.examreviewer.model.Topic;
 import com.epam.examreviewer.repository.QuestionRepository;
+import com.epam.examreviewer.repository.TopicRepository;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.NoSuchElementException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,23 +17,23 @@ import org.springframework.stereotype.Service;
 public class QuestionService {
 
   private QuestionRepository questionRepository;
-
-  public Question getRandomQuestion(ExamType exam, Long topicId) {
-    List<Question> questions = questionRepository.findAll();
-
-    return null;
-//    return questions.stream()
-//        .filter(question -> question.getTopics().stream()
-//            .filter(topic -> topic.getExam().equals(exam))
-//            .anyMatch(topic -> topic.getId().equals(topicId)))
-//        .findFirst().orElseThrow(NoSuchElementException::new);
-  }
+  private TopicRepository topicRepository;
 
   public Question saveQuestion(Question question) {
     return questionRepository.save(question);
   }
 
-  public List<Question> getAllQuestions() {
-    return questionRepository.findAll();
+  public List<Question> getAllQuestions(String topicId) {
+    List<String> questionIds = topicRepository
+        .findById(topicId)
+        .map(Topic::getQuestionIds)
+        .orElse(Collections.emptyList());
+
+    List<Question> questionList = new ArrayList<>();
+    for (String questId : questionIds) {
+      Question question = questionRepository.findById(questId).get();
+      questionList.add(question);
+    }
+    return questionList;
   }
 }
