@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 class CSVKeywordsParser {
 
-  private Map<String, Double> keywordsMap;
+  private Map<String, Double> keywordsMap = new HashMap<>();
 
   CSVKeywordsParser() {
     fillMapWithKeywordsFromFile(getCSVFromResources("keywords.csv"));

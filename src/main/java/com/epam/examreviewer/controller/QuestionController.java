@@ -1,5 +1,6 @@
 package com.epam.examreviewer.controller;
 
+import com.epam.examreviewer.dto.QuestionDto;
 import com.epam.examreviewer.model.Question;
 import com.epam.examreviewer.service.QuestionService;
 import java.util.List;
@@ -17,7 +18,7 @@ public class QuestionController {
   private final QuestionService questionService;
 
   @GetMapping("/questions")
-  public List<Question> getAllQuestion(@RequestParam String topicId) {
+  public List<QuestionDto> getAllQuestion(@RequestParam Long topicId) {
     return questionService.getAllQuestions(topicId);
   }
 
