@@ -40,7 +40,7 @@ public class AnswerService {
       Material material = materialRepository.findById(question.getMaterialId()).orElseThrow(
           NoSuchElementException::new);
 
-      String referenceText = material.getDescription();
+      String referenceText = material.getMaterialLinks().get(0);
 
       long mark = Math.round(100 * nlpMock.evaluateAnswerText(answerText, referenceText));
       String markText;
