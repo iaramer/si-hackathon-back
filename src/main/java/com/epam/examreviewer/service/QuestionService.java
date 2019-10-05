@@ -1,5 +1,7 @@
 package com.epam.examreviewer.service;
 
+import com.epam.examreviewer.converter.QuestionConverter;
+import com.epam.examreviewer.dto.QuestionDto;
 import com.epam.examreviewer.model.Question;
 import com.epam.examreviewer.model.Topic;
 import com.epam.examreviewer.repository.QuestionRepository;
@@ -24,17 +26,12 @@ public class QuestionService {
     return questionRepository.save(question);
   }
 
-  public List<Question> getAllQuestions(String topicId) {
-    List<String> questionIds = topicRepository
-        .findById(topicId)
+  public List<QuestionDto> getAllQuestions(Long topicId) {
+    return topicRepository
+        .findById(String.valueOf(topicId))
         .map(Topic::getQuestionIds)
-        .orElse(Collections.emptyList());
-
-    List<Question> questionList = new ArrayList<>();
-    for (String questId : questionIds) {
-      Question question = questionRepository.findById(questId).get();
-      questionList.add(question);
-    }
-    return questionList;
+        .map(questionRepository::findByIdIn)
+        .map(QuestionConverter::toDto)
+        .orElse(List.of());
   }
 }

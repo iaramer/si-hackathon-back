@@ -7,7 +7,11 @@ import lombok.Data;
 @AllArgsConstructor
 public class TopicDto {
 
+  private String id;
+
   private String topicName;
+
+  private String description;
 
   private String languageId;
 
