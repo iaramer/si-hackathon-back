@@ -17,4 +17,6 @@ public class Question {
   private String questionText;
 
   private List<Topic> topics;
+
+  private long answerId;
 }

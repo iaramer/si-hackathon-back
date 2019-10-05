@@ -17,7 +17,7 @@ public class AnswerController {
 
   @PostMapping("/answer")
   @ResponseStatus(HttpStatus.OK)
-  public Answer getAnswer(@RequestHeader("id") Long id){
-    return answerService.getAnswer(id);
+  public Answer getAnswer(@RequestHeader("id") Long question_id){
+    return answerService.getAnswer(question_id);
   }
 }
