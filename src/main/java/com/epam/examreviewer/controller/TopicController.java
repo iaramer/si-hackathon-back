@@ -18,7 +18,7 @@ public class TopicController {
 
   @GetMapping("/topics")
   @ResponseStatus(HttpStatus.OK)
-  public List<TopicDto> getTopics(@RequestParam Long examId, Long languageId) {
+  public List<TopicDto> getTopics(@RequestParam Long examId, @RequestParam Long languageId) {
     return topicService.getTopics(examId, languageId);
   }
 }
